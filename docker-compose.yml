@@ -1,0 +1,53 @@
+version: '3.8'
+
+services:
+  api:
+    build: ./api
+    container_name: rag_api
+    ports:
+      - "8080:8000"
+    depends_on:
+      - chromadb
+      - ollama
+    environment:
+      - CHROMA_HOST=chromadb
+      - OLLAMA_HOST=ollama
+
+
+  bot:
+    build: ./bot
+    container_name: rag_bot
+    depends_on:
+      - api
+    environment:
+      - TELEGRAM_TOKEN=8036461900:AAEssTdz2JgP5bJGy-2uyh67lNsaq6IUndw
+      - API_URL=http://api:8000
+
+  ollama:
+    image: ollama/ollama
+    container_name: rag_ollama
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+
+  chromadb:
+    image: chromadb/chroma
+    container_name: rag_chroma
+    ports:
+      - "8000:8000"
+    volumes:
+      - chroma_data:/chroma/chroma
+    environment:
+      - IS_PERSISTENT=TRUE
+
+volumes:
+  ollama_data:
+  chroma_data:
