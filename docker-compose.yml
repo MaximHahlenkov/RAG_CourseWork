@@ -12,7 +12,7 @@ services:
     environment:
       - CHROMA_HOST=chromadb
       - OLLAMA_HOST=ollama
-
+    restart: always
 
   bot:
     build: ./bot
@@ -20,8 +20,9 @@ services:
     depends_on:
       - api
     environment:
-      - TELEGRAM_TOKEN=8036461900:AAEssTdz2JgP5bJGy-2uyh67lNsaq6IUndw
+      - TELEGRAM_TOKEN=${TELEGRAM_TOKEN}
       - API_URL=http://api:8000
+    restart: always
 
   ollama:
     image: ollama/ollama
@@ -47,6 +48,7 @@ services:
       - chroma_data:/chroma/chroma
     environment:
       - IS_PERSISTENT=TRUE
+    restart: always
 
 volumes:
   ollama_data:
