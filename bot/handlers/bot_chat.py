@@ -1,4 +1,4 @@
-from bot.main import bot
+from bot.bot_main import bot
 
 @bot.callback_query_handler(func=lambda call: True)
 def callback_inline(call):

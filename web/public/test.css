@@ -1,0 +1,59 @@
+/* ====================== TIFFANY BLUE ====================== */
+
+:root {
+  --primary: #81D8D0 !important;
+  --primary-foreground: #0a2a2a !important;
+}
+
+/* Основные кнопки отправки */
+button[class*="submit"],
+.cl-submit-button,
+.MuiButton-containedPrimary,
+[data-variant="default"] button {
+  background-color: #81D8D0 !important;
+  color: #0a2a2a !important;
+  border: none !important;
+}
+
+button[class*="submit"]:hover,
+.cl-submit-button:hover {
+  background-color: #6bc4bc !important;
+}
+
+/* Primary иконки */
+.MuiIconButton-colorPrimary,
+svg[color="primary"],
+.cl-icon-primary {
+  color: #81D8D0 !important;
+}
+
+/* Скрываем копирование */
+button[aria-label*="Copy"],
+button[aria-label*="Копировать"],
+.cl-clipboard-btn,
+[aria-label*="copy"] {
+  display: none !important;
+}
+
+/* Пустые сообщения */
+.MuiPaper-root:has(.cl-message-content:empty),
+.cl-message:has(.cl-message-content:empty) {
+  display: none !important;
+}
+
+/* Сообщения пользователя */
+.cl-user-message {
+  background-color: #81D8D0 !important;
+  color: #0a2a2a !important;
+  border-radius: 18px !important;
+}
+
+/* Input */
+textarea, input[class*="input"] {
+  border-color: #81D8D0 !important;
+}
+
+textarea:focus, input[class*="input"]:focus {
+  box-shadow: 0 0 0 3px rgba(129, 216, 208, 0.4) !important;
+  border-color: #81D8D0 !important;
+}
