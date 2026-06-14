@@ -12,6 +12,7 @@ services:
     environment:
       - CHROMA_HOST=chromadb
       - OLLAMA_HOST=ollama
+      - HF_TOKEN=${HF_TOKEN}
     restart: always
 
   bot:
@@ -50,6 +51,16 @@ services:
       - IS_PERSISTENT=TRUE
     restart: always
 
+  web:
+    build: ./web
+    container_name: rag_web
+    ports:
+      - "8501:8501"
+    depends_on:
+      - api
+    environment:
+      - API_URL=http://api:8000/api/v1
+    restart: always
 volumes:
   ollama_data:
   chroma_data:
