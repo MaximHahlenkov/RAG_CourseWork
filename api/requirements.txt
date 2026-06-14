@@ -8,3 +8,6 @@ langchain-chroma
 chromadb
 pypdf
 sentence-transformers
+docx2txt
+unstructured[md]
+python-magic

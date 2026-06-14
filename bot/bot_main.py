@@ -25,7 +25,7 @@ def callback_inline(call):
     if call.data == "help":
         bot.answer_callback_query(call.id)
         bot.send_message(call.message.chat.id,
-                         "**Инструкция:**\n1. Пришли мне PDF файл.\n2. Дождись уведомления об обработке.\n3. Задай любой вопрос по тексту файла.")
+                         "Инструкция:\n1. Пришли мне PDF/docx/txt/MD файл.\n2. Дождись уведомления об обработке.\n3. Задай любой вопрос по тексту файла.")
 
     elif call.data == "status":
         bot.answer_callback_query(call.id, "Проверяю API...")

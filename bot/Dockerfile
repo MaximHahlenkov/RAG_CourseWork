@@ -3,4 +3,4 @@ WORKDIR /app
 COPY requirements.txt .
 RUN pip install --no-cache-dir --default-timeout=1000 -r requirements.txt
 COPY . .
-CMD ["python", "main.py"]
+CMD ["python", "bot_main.py"]
